@@ -1,0 +1,30 @@
+Project Title
+API automation
+
+ENDPOINT -> 
+	https://jsonplaceholder.typicode.com/posts
+
+HTTP METHODS -> 
+    GET
+    POST
+    PUT
+    DELETE
+    
+Prerequisites
+install -> 
+	python version -> 3.5.2 
+
+libraries required -> 
+    pip install jsonschema
+    pip install json
+    pip install requests
+    pip intsall html-testRunner
+    
+Running the tests via cmd -> python test_main.py. 
+
+Results -> 
+	HTML reports will be generated inside reports directory
+	with all the test execution results. 
+    
+    
+

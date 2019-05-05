@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "properties": {
+    "body": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "title": {
+      "type": "string"
+    },
+    "userId": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "body",
+    "id",
+    "title",
+    "userId"
+  ]
+}
+
+
