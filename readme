@@ -20,6 +20,7 @@ libraries required ->
     pip install requests
     pip intsall html-testRunner
     pip install pytest-html
+    pip install pytest
     
 Running the tests via cmd -> pytest -v -s --html=reports/report.html --self-contained-html --capture=sys
 
