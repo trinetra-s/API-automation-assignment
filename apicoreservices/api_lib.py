@@ -18,22 +18,21 @@ class ApiCore():
     def get_response_count(self):
         return len(self.get_json())
 
-    def validate_json_schema(self, json_schema, type):
+    def validate_json_schema(self, json_schema, type, response_json):
         dir = os.path.abspath(os.path.join('schema', json_schema))
         try:
             with open(dir, 'rb') as f:
                 f_data = f.read().decode('utf-8')
-            data = self.get_json()
         except FileNotFoundError as e:
             print('File Not Found!!!', e)
         try:
             if type == 'list':
-                type = data[0]
+                type = response_json[0]
             if type == 'dict':
-                type = data
+                type = response_json
             jsonschema.validate(instance= type, schema= json.loads(f_data))
-        except jsonschema.exceptions.ValidationError as e:
-            print('The JSON is invalid', e)
+        except jsonschema.exceptions.ValidationError as e :
+            raise jsonschema.exceptions.ValidationError(msg='JSON is INVALID'.format(e))
 
     def create_data(self, url, data, headers):
         response = requests.post(url, data, headers)
@@ -46,4 +45,3 @@ class ApiCore():
     def delete_data(self, url, headers):
         response = requests.delete(url, headers=headers)
         return response
-
