@@ -1,6 +1,9 @@
 from apicoreservices import api_lib
+from apicoreservices.log_lib import Log
 
-class TestDeleteService(api_lib.ApiCore):
+class DeleteServiceTest(api_lib.ApiCore):
+
+    logging = Log.log_config()
 
     def test_case1(self):
             '''
@@ -10,13 +13,15 @@ class TestDeleteService(api_lib.ApiCore):
             header = {"Content-type": "application/json",
                       "charset": "UTF-8",
                       "Accept": "text/plain"}
-            return self.delete_data(url, headers=header)
+            data = self.delete_data(url, headers=header)
+            return data
 
     def test_case2(self):
             '''
             Verifying the status code after deleting the resource.
             '''
             assert self.test_case1().status_code == 200
+            self.logging.info('TEST CASE2 PASSED and resource deleted {}'.format(self.test_case1().status_code))
 
     def test_case3(self):
             '''
@@ -24,4 +29,5 @@ class TestDeleteService(api_lib.ApiCore):
             the resource is deleted.
             '''
             assert self.test_case1().json() == {}
+            self.logging.info('TEST CASE3 PASSED and resource deleted {}'.format(self.test_case1().json()))
 
